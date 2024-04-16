@@ -230,5 +230,22 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void ClearRecipeData()
+        {
+            ingName.Clear();
+            ingQuantity.Clear();
+            ingUnit.Clear();
+            stepDescription.Clear();
+            newIngQuantity.Clear();
+
+            numIngredients = 0;
+            numSteps = 0;
+            numScale = 0;
+
+            Console.WriteLine("All recipe data has been cleared. You can now enter a new recipe.");
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
