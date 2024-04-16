@@ -7,6 +7,8 @@
 // https://raisanenmarkus.github.io/csharp/part3/1/#:~:text=Creating%20a%20new%20list%20is,the%20List%20variable%20is%20List.
 // https://wellsb.com/csharp/beginners/create-menu-csharp-console-application
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -18,12 +20,15 @@ namespace PROGPOE.Classes
 {
     internal class Class1
     {
+
+        // Lists to store ingredient details
         List<string> ingName = new List<string>();
         List<int> ingQuantity = new List<int>();
         List<string> ingUnit = new List<string>();
         List<string> stepDescription = new List<string>();
         List<int> newIngQuantity = new List<int>();
 
+        // Variables to hold recipe details
         string name;
         int quantity;
         string unit;
@@ -35,6 +40,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to display menu options
         public void DisplayMenu()
         {
             Console.WriteLine("************* MENU **************");
@@ -50,6 +56,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Main method to run the recipe program
         public void Run()
         {
             int choice;
@@ -95,6 +102,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to input ingredients
         public void Ingredients()
         {
             Console.WriteLine("Enter the number of ingredients: ");
@@ -131,6 +139,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to print original recipe report
         public void PrintReport()
         {
             Console.WriteLine("");
@@ -161,6 +170,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to input steps
         public void Steps()
         {
             Console.WriteLine("");
@@ -177,6 +187,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to change the scale factor
         public void ScaledFactor()
         {
             Console.WriteLine("What would you like to change the scale factor to? '0.5', '2', or '3' : ");
@@ -204,6 +215,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to print updated recipe report
         public void NewPrintReport()
         {
             Console.WriteLine("");
@@ -234,6 +246,7 @@ namespace PROGPOE.Classes
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        // Method to clear all data from recipe
         public void ClearRecipeData()
         {
             ingName.Clear();
@@ -254,4 +267,4 @@ namespace PROGPOE.Classes
     }
 }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<**********************END OF FILE*****************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
