@@ -46,5 +46,50 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void Run()
+        {
+            int choice;
+            do
+            {
+                DisplayMenu();
+                Console.WriteLine("Enter your choice (1-7): ");
+                if (!int.TryParse(Console.ReadLine(), out choice))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+
+                switch (choice)
+                {
+                    case 1:
+                        Ingredients();
+                        break;
+                    case 2:
+                        Steps();
+                        break;
+                    case 3:
+                        PrintReport();
+                        break;
+                    case 4:
+                        ScaledFactor();
+                        break;
+                    case 5:
+                        NewPrintReport();
+                        break;
+                    case 6:
+                        ClearRecipeData();
+                        break;
+                    case 7:
+                        Console.WriteLine("Exiting...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please enter a number between 1 and 7.");
+                        break;
+                }
+            } while (choice != 7);
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
