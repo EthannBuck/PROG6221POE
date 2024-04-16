@@ -173,5 +173,32 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void ScaledFactor()
+        {
+            Console.WriteLine("What would you like to change the scale factor to? '0.5', '2', or '3' : ");
+            numScale = double.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numIngredients; i++)
+            {
+                if (numScale == 0.5)
+                {
+                    newQuantity = ingQuantity[i] / 2;
+                    newIngQuantity.Add(newQuantity);
+                }
+                else if (numScale == 2)
+                {
+                    newQuantity = ingQuantity[i] * 2;
+                    newIngQuantity.Add(newQuantity);
+                }
+                else if (numScale == 3)
+                {
+                    newQuantity = ingQuantity[i] * 3;
+                    newIngQuantity.Add(newQuantity);
+                }
+            }
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
