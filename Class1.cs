@@ -91,5 +91,41 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void Ingredients()
+        {
+            Console.WriteLine("Enter the number of ingredients: ");
+            numIngredients = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numIngredients; i++)
+            {
+                Console.WriteLine("Enter the name of the ingredient: ");
+                name = Console.ReadLine();
+                ingName.Add(name);
+
+                Console.WriteLine("Enter the quantity of the ingredient: ");
+                quantity = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter the unit of measurement of the ingredient: ");
+                unit = Console.ReadLine();
+
+                if (unit.ToLower() == "tablespoons")
+                {
+                    if (quantity % 16 == 0)
+                    {
+                        quantity /= 16;
+                    }
+                    else
+                    {
+                        quantity = quantity / 16 + 1;
+                    }
+                    unit = "cups";
+                }
+                ingQuantity.Add(quantity);
+                ingUnit.Add(unit);
+            }
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
