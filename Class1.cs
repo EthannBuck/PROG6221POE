@@ -200,5 +200,35 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void NewPrintReport()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("*************************************************");
+            Console.WriteLine("");
+            Console.WriteLine("INGREDIENTS FOR RECIPE: ");
+            Console.WriteLine("");
+
+            for (int i = 0; i < numIngredients; i++)
+            {
+                Console.WriteLine(newIngQuantity[i] + " " + ingUnit[i] + " of " + ingName[i]);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("*************************************************");
+            Console.WriteLine("");
+            Console.WriteLine("STEPS FOR RECIPE: ");
+            Console.WriteLine("");
+
+            for (int i = 0; i < numSteps; i++)
+            {
+                Console.WriteLine("Step " + (i + 1) + ": " + stepDescription[i]);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("*************************************************");
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
