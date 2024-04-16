@@ -157,5 +157,21 @@ namespace PROGPOE.Classes
 
         //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+        public void Steps()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Enter the number of steps: ");
+            numSteps = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= numSteps; i++)
+            {
+                Console.WriteLine("Enter Step " + i);
+                description = Console.ReadLine();
+                stepDescription.Add(description);
+            }
+        }
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     }
 }
