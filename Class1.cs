@@ -2,6 +2,11 @@
 // ST10250745
 // Group 1
 
+// References:
+// https://www.geeksforgeeks.org/console-clear-method-in-c-sharp/
+// https://raisanenmarkus.github.io/csharp/part3/1/#:~:text=Creating%20a%20new%20list%20is,the%20List%20variable%20is%20List.
+// https://wellsb.com/csharp/beginners/create-menu-csharp-console-application
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
