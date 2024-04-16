@@ -7,7 +7,8 @@
 // https://raisanenmarkus.github.io/csharp/part3/1/#:~:text=Creating%20a%20new%20list%20is,the%20List%20variable%20is%20List.
 // https://wellsb.com/csharp/beginners/create-menu-csharp-console-application
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// This section represents a delimiter for clarity
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,10 @@ namespace PROGPOE.Classes
         double numScale;
         int newQuantity;
         int numIngredients;
+        string clearChoice;
+        int choice;
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to display menu options
         public void DisplayMenu()
@@ -54,17 +57,20 @@ namespace PROGPOE.Classes
             Console.WriteLine("*********************************");
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Main method to run the recipe program
         public void Run()
         {
-            int choice;
             do
             {
                 DisplayMenu();
                 Console.WriteLine("Enter your choice (1-7): ");
-                if (!int.TryParse(Console.ReadLine(), out choice))
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
                 {
                     Console.WriteLine("Invalid input. Please enter a number.");
                     continue;
@@ -88,25 +94,47 @@ namespace PROGPOE.Classes
                         NewPrintReport();
                         break;
                     case 6:
-                        ClearRecipeData();
+                        if (choice == 6)
+                        {
+                            Console.WriteLine("Are you sure you want to clear all data? (yes/no)");
+                            clearChoice = Console.ReadLine().ToLower();
+
+                            if (clearChoice == "yes")
+                            {
+                                ClearRecipeData();
+                            }
+                        }
                         break;
                     case 7:
                         Console.WriteLine("Exiting...");
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Please enter a number between 1 and 7.");
+                        Console.WriteLine("Invalid choice. Please enter a number between 1 and 7:");
                         break;
                 }
             } while (choice != 7);
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to input ingredients
         public void Ingredients()
         {
             Console.WriteLine("Enter the number of ingredients: ");
-            numIngredients = int.Parse(Console.ReadLine());
+            try
+            {
+                numIngredients = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer:");
+                return;
+            }
+            if (numIngredients <= 0)
+            {
+                Console.WriteLine("Invalid input. Please enter a positive integer for the number of ingredients:");
+                return;
+            }
 
             for (int i = 0; i < numIngredients; i++)
             {
@@ -115,7 +143,25 @@ namespace PROGPOE.Classes
                 ingName.Add(name);
 
                 Console.WriteLine("Enter the quantity of the ingredient: ");
-                quantity = int.Parse(Console.ReadLine());
+                try
+                {
+                    quantity = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid integer:");
+                    ingName.RemoveAt(ingName.Count - 1);
+                    i--;
+                    continue;
+                }
+
+                if (quantity <= 0)
+                {
+                    Console.WriteLine("Invalid input. Please enter a positive integer for the quantity:");
+                    ingName.RemoveAt(ingName.Count - 1);
+                    i--;
+                    continue;
+                }
 
                 Console.WriteLine("Enter the unit of measurement of the ingredient: ");
                 unit = Console.ReadLine();
@@ -137,7 +183,7 @@ namespace PROGPOE.Classes
             }
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to print original recipe report
         public void PrintReport()
@@ -168,14 +214,27 @@ namespace PROGPOE.Classes
             Console.WriteLine("*************************************************");
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to input steps
         public void Steps()
         {
             Console.WriteLine("");
             Console.WriteLine("Enter the number of steps: ");
-            numSteps = int.Parse(Console.ReadLine());
+            try
+            {
+                numSteps = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer:");
+                return;
+            }
+            if (numSteps <= 0)
+            {
+                Console.WriteLine("Invalid input. Please enter a positive integer for the number of steps:");
+                return;
+            }
 
             for (int i = 1; i <= numSteps; i++)
             {
@@ -185,13 +244,21 @@ namespace PROGPOE.Classes
             }
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to change the scale factor
         public void ScaledFactor()
         {
             Console.WriteLine("What would you like to change the scale factor to? '0.5', '2', or '3' : ");
-            numScale = double.Parse(Console.ReadLine());
+            try
+            {
+                numScale = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number:");
+                return;
+            }
 
             for (int i = 0; i < numIngredients; i++)
             {
@@ -213,7 +280,7 @@ namespace PROGPOE.Classes
             }
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to print updated recipe report
         public void NewPrintReport()
@@ -244,7 +311,7 @@ namespace PROGPOE.Classes
             Console.WriteLine("*************************************************");
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Method to clear all data from recipe
         public void ClearRecipeData()
@@ -262,7 +329,7 @@ namespace PROGPOE.Classes
             Console.WriteLine("All recipe data has been cleared. You can now enter a new recipe.");
         }
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*****************************************************************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     }
 }
